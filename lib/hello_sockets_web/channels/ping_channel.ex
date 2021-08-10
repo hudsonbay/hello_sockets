@@ -15,6 +15,10 @@ defmodule HelloSocketsWeb.PingChannel do
   @doc """
   Receives an event, payload, and the state of the current Socket.
   """
+  def handle_in("ping:" <> phrase, _payload, socket) do
+    {:reply, {:ok, %{ping: phrase}}, socket}
+  end
+
   def handle_in("ping", %{"ack_phrase" => ack_phrase}, socket) do
     {:reply, {:ok, %{ping: ack_phrase}}, socket}
   end

@@ -30,7 +30,8 @@ I implemented `PingChannel` and configured our `Socket` route to send the `ping`
 | 1 | `$ wscat -c 'ws://localhost:4000/socket/websocket?vsn=2.0.0' ` | _connected (press CTRL+C to quit)_ |
 | 2 | `["1","1","ping","phx_join",{}]` | _["1","1","ping","phx_reply",{"response":{},"status":"ok"}]_ |
 | 3 | `["1","2","ping","ping",{}]` | _["1","2","ping","phx_reply",{"response":{"ping":"pong"},"status":"ok"}]_ |
-| 3 | `["1","3","ping","ping",{"ack_phrase":"hooray!"}]` | _["1","3","ping","phx_reply",{"response":{"ping":"hooray!"},"status":"ok"}]_ |
+| 4 | `["1","3","ping","ping",{"ack_phrase":"hooray!"}]` | _["1","3","ping","phx_reply",{"response":{"ping":"hooray!"},"status":"ok"}]_ |
+| 5 | `["1","4","ping","ping:hooray!",{}]` | _["1","4","ping","phx_reply",{"response":{"ping":"hooray!"},"status":"ok"}]_ |
 
 ####`wild` topic
 The rule for joining this topic is that the last number should double the first number. If not, you can't join.
