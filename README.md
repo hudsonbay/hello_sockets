@@ -22,7 +22,7 @@ A WebSocket connection follows this request flow:
 
 ### How to intertact with this application
 
-We implemented `PingChannel` and configured our `Socket` route to send the `ping` topic to our `Channel`. We can use a CLI application to test that our `Channel` works. `wscat` is an npm package that allows for connecting to, sending data to, and receiving data from a WebSocket. It can be a little cumbersome to use but has the advantage of being easy to setup. Use `npm install -g wscat` in order to get started.
+I implemented `PingChannel` and configured our `Socket` route to send the `ping` topic to our `Channel`. We can use a CLI application to test that our `Channel` works. `wscat` is an npm package that allows for connecting to, sending data to, and receiving data from a WebSocket. It can be a little cumbersome to use but has the advantage of being easy to setup. Use `npm install -g wscat` in order to get started.
 
 ####`ping` topic
 | Step | Command | Output |
@@ -42,6 +42,9 @@ The rule for joining this topic is that the last number should double the first 
 | 5 | `["1","4","wild:20:40","phx_join",{}]` | _["4","4","wild:20:40","phx_reply",{"response":{},"status":"ok"}]_ |
 | 6 | `["1","5","wild:2:4:6","phx_join",{}]` | _["5","5","wild:2:4:6","phx_reply",{"response":{},"status":"error"}]_ |
 
+#### Phoenix Message Structure
+![](message_structure.png)
+
 ### Installation
 
 To start your Phoenix server:
@@ -49,7 +52,3 @@ To start your Phoenix server:
 - Install dependencies with `mix deps.get`
 - Install Node.js dependencies with `npm install` inside the `assets` directory
 - Start Phoenix endpoint with `mix phx.server`
-
-```
-
-```
