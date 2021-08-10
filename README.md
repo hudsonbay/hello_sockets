@@ -43,7 +43,15 @@ The rule for joining this topic is that the last number should double the first 
 | 6 | `["1","5","wild:2:4:6","phx_join",{}]` | _["5","5","wild:2:4:6","phx_reply",{"response":{},"status":"error"}]_ |
 
 #### Phoenix Message Structure
+Phoenix Channels use a simple message protocol to represent all messages to and from a client. The contents of the Message allow clients to keep track of the request and reply flow, which is important because multiple asynchronous requests can be issued to a single Channel. In the following figure you can see the different fields in Phoenix.Message:
 ![](message_structure.png)
+
+Let’s break down each of these fields and their use in the Channel flow:
+* *Join Ref*—A unique string that matches what the client provided when it connected to the Channel. This is used to help prevent duplicate Channel subscriptions from the client. In practice this is a number that is incremented each time a Channel is joined.
+* *Message Ref*—A unique string that is provided by the client on every message. This is used to allow a reply to be sent in response to a client message. In practice this is a number which is incremented each time a client sends a message
+* *Topic*—The topic of the Channel
+* *Event*—A string identifying the message. The Channel implementation can use pattern matching to handle different events easily
+* *Payload*—A JSON encoded map (string) that contains the data contents of the message. The Channel implementation can use pattern matching on the decoded map to handle different cases for an event
 
 ### Installation
 
