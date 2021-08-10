@@ -1,4 +1,9 @@
 defmodule HelloSocketsWeb.WildCardChannel do
+  @moduledoc """
+  Channel that looks very similar to our PingChannel but it has
+  a conditional in the join/3 function which checks if the provided numbers are
+  correct.
+  """
   use Phoenix.Channel
 
   def join("wild:" <> numbers, _payload, socket) do
