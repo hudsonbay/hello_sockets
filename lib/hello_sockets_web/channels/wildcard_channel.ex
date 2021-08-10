@@ -14,9 +14,7 @@ defmodule HelloSocketsWeb.WildCardChannel do
     end
   end
 
-  def handle_in("ping", %{"ack_phrase" => ack_phrase}, socket) do
-    {:reply, {:ok, %{ping: ack_phrase}}, socket}
-  end
+
 
   def handle_in("ping", _payload, socket) do
     {:reply, {:ok, %{ping: "pong"}}, socket}
