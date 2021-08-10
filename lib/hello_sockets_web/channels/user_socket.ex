@@ -5,6 +5,7 @@ defmodule HelloSocketsWeb.UserSocket do
   # channel "room:*", HelloSocketsWeb.RoomChannel
   channel "ping", HelloSocketsWeb.PingChannel
   channel "ping:*", HelloSocketsWeb.PingChannel
+  channel "wild:*", HelloSocketsWeb.WildCardChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
