@@ -8,7 +8,7 @@ All of this info was taken from the book [_Real-Time Phoenix_](https://pragprog.
 ### WebSocket Protocol
 https://tools.ietf.org/html/rfc6455
 
-###Establishing the Connection
+### Establishing the Connection
 Load the HelloSockets webpage by visiting http://localhost:4000. You will see the default generated Phoenix start screen. What we want to see is hiding from us, and we’ll use the DevTools in our browser to view it. You can open the DevTools by `right click > Inspect` on the webpage. There will be a variety of tabs, but we want to select the `Network` tab. Once there, reload the webpage in order to capture the connected WebSocket.
 
 Select the `WS` tab in order to only show WebSocket connections. You are looking for the connection labeled `websocket?token=undefined&vsn=2.0.0`. You may see another connected WebSocket because Phoenix comes with a developer code reloader that operates over a WebSocket, but you can ignore that one.
@@ -24,7 +24,7 @@ A WebSocket connection follows this request flow:
 
 I implemented `PingChannel` and configured our `Socket` route to send the `ping` topic to our `Channel`. We can use a CLI application to test that our `Channel` works. `wscat` is an npm package that allows for connecting to, sending data to, and receiving data from a WebSocket. It can be a little cumbersome to use but has the advantage of being easy to setup. Use `npm install -g wscat` in order to get started.
 
-####`ping` topic
+#### `ping` topic
 | Step | Command | Output |
 | ---- | -------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | 1 | `$ wscat -c 'ws://localhost:4000/socket/websocket?vsn=2.0.0' ` | _connected (press CTRL+C to quit)_ |
@@ -33,7 +33,7 @@ I implemented `PingChannel` and configured our `Socket` route to send the `ping`
 | 4 | `["1","3","ping","ping",{"ack_phrase":"hooray!"}]` | _["1","3","ping","phx_reply",{"response":{"ping":"hooray!"},"status":"ok"}]_ |
 | 5 | `["1","4","ping","ping:hooray!",{}]` | _["1","4","ping","phx_reply",{"response":{"ping":"hooray!"},"status":"ok"}]_ |
 
-####`wild` topic
+#### `wild` topic
 The rule for joining this topic is that the last number should double the first number. If not, you can't join.
 | Step | Command | Output |
 | ---- | -------------------------------------------------------------- | ------------------------------------------------------------------------- |
